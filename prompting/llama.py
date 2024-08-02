@@ -1,17 +1,16 @@
 import requests
 
-# Imposta la tua API key di Hugging Face
 api_key = ''
 
-# Definisci l'endpoint dell'API di Hugging Face per LLaMA
+# Endpoint
 api_url = 'https://api-inference.huggingface.co/models/llama-model-name'  # Modifica con il nome reale del modello
 
-# Definisci il prompt e altri parametri
+# Parameters
 prompt = ""
 max_tokens = 50
 temperature = 0.7
 
-# Prepara il payload della richiesta
+# Request data
 payload = {
     'inputs': prompt,
     'parameters': {
@@ -20,16 +19,16 @@ payload = {
     }
 }
 
-# Imposta le intestazioni della richiesta
+#
 headers = {
     'Authorization': f'Bearer {api_key}',
     'Content-Type': 'application/json'
 }
 
-# Fai una chiamata all'API
+# API call
 response = requests.post(api_url, json=payload, headers=headers)
 
-# Controlla se la richiesta è andata a buon fine
+# Response
 if response.status_code == 200:
     # Estrai e stampa la risposta
     response_json = response.json()
